@@ -16,8 +16,9 @@ else
 fi
 
 if [ ! -e $ROOTFS_DIR/.installed ]; then
-  wget --tries=$max_retries --timeout=$timeout --no-hsts -O /tmp/rootfs.tar.gz "http://cdimage.ubuntu.com/ubuntu-base/releases/20.04/release/ubuntu-base-20.04.4-base-${ARCH_ALT}.tar.gz"
-  tar -xf /tmp/rootfs.tar.gz -C $ROOTFS_DIR
+  wget --tries=$max_retries --timeout=$timeout --no-hsts -O rootfs.tar.gz "http://cdimage.ubuntu.com/ubuntu-base/releases/20.04/release/ubuntu-base-20.04.4-base-${ARCH_ALT}.tar.gz"
+  tar -xf rootfs.tar.gz -C $ROOTFS_DIR
+  rm rootfs.tar.gz
 fi
 
 if [ ! -e $ROOTFS_DIR/.installed ]; then
