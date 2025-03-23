@@ -16,10 +16,28 @@ else
 fi
 
 if [ ! -e $ROOTFS_DIR/.installed ]; then
-  wget --tries=$max_retries --timeout=$timeout --no-hsts -O rootfs.tar.gz "http://cdimage.ubuntu.com/ubuntu-base/releases/20.04/release/ubuntu-base-20.04.4-base-${ARCH_ALT}.tar.gz"
-  tar -xf rootfs.tar.gz -C $ROOTFS_DIR
-  rm rootfs.tar.gz
+  echo "#######################################################################################"
+  echo "#"
+  echo "#                                      Foxytoux INSTALLER"
+  echo "#"
+  echo "#                           Copyright (C) 2024, RecodeStudios.Cloud"
+  echo "#"
+  echo "#"
+  echo "#######################################################################################"
+
+  install_ubuntu=YES
 fi
+
+case $install_ubuntu in
+  [yY][eE][sS])
+    wget --tries=$max_retries --timeout=$timeout --no-hsts -O rootfs.tar.gz \
+      "http://cdimage.ubuntu.com/ubuntu-base/releases/20.04/release/ubuntu-base-20.04.4-base-${ARCH_ALT}.tar.gz"
+    tar -xf rootfs.tar.gz -C $ROOTFS_DIR
+    ;;
+  *)
+    echo "Skipping Ubuntu installation."
+    ;;
+esac
 
 if [ ! -e $ROOTFS_DIR/.installed ]; then
   mkdir $ROOTFS_DIR/usr/local/bin -p
