@@ -16,12 +16,30 @@ else
 fi
 
 if [ ! -e $ROOTFS_DIR/.installed ]; then
+  echo
+  echo "###################"
+  echo "# 1) Ubuntu 22.04 #"
+  echo "# 2) Ubuntu 24.04 #"
+  echo "###################"
+  echo
+  read -p "Ubuntu version (1/2, default 2): " ubuntu_ver
+  if [ "$ubuntu_ver" -ne 1 ] && [ "$ubuntu_ver" -ne 2 ]; then
+    echo
+    echo "Wrong version!"
+    echo "Choose 1 or 2"
+    echo
+    exit
+  fi
   install_ubuntu=YES
 fi
 
 case $install_ubuntu in
   [yY][eE][sS])
-    wget --tries=$max_retries --timeout=$timeout --no-hsts -O rootfs.tar.gz "https://raw.githubusercontent.com/womimc/ubuntu-rootfs/refs/heads/main/ubuntu-base-22.04.5-base-${ARCH_ALT}.tar.gz"
+    if [ "$ubuntu_ver" == "1" ]; then
+      wget --tries=$max_retries --timeout=$timeout --no-hsts -O rootfs.tar.gz "https://raw.githubusercontent.com/womimc/ubuntu-rootfs/refs/heads/main/ubuntu-base-22.04.5-base-${ARCH_ALT}.tar.gz"
+    elif [ "$ubuntu_ver" == "2" ]; then
+      wget --tries=$max_retries --timeout=$timeout --no-hsts -O rootfs.tar.gz "https://raw.githubusercontent.com/womimc/ubuntu-rootfs/refs/heads/main/ubuntu-base-22.04.5-base-${ARCH_ALT}.tar.gz"
+    fi
     tar -xf rootfs.tar.gz -C $ROOTFS_DIR
     rm rootfs.tar.gz
     ;;
@@ -32,11 +50,11 @@ esac
 
 if [ ! -e $ROOTFS_DIR/.installed ]; then
   mkdir $ROOTFS_DIR/usr/local/bin -p
-  wget --tries=$max_retries --timeout=$timeout --no-hsts -O $ROOTFS_DIR/usr/local/bin/proot "https://raw.githubusercontent.com/foxytouxxx/freeroot/main/proot-${ARCH}"
+  wget --tries=$max_retries --timeout=$timeout --no-hsts -O $ROOTFS_DIR/usr/local/bin/proot "https://raw.githubusercontent.com/womimc/root/main/proot-${ARCH}"
 
   while [ ! -s "$ROOTFS_DIR/usr/local/bin/proot" ]; do
     rm $ROOTFS_DIR/usr/local/bin/proot -rf
-    wget --tries=$max_retries --timeout=$timeout --no-hsts -O $ROOTFS_DIR/usr/local/bin/proot "https://raw.githubusercontent.com/foxytouxxx/freeroot/main/proot-${ARCH}"
+    wget --tries=$max_retries --timeout=$timeout --no-hsts -O $ROOTFS_DIR/usr/local/bin/proot "https://raw.githubusercontent.com/womimc/root/main/proot-${ARCH}"
 
     if [ -s "$ROOTFS_DIR/usr/local/bin/proot" ]; then
       chmod 755 $ROOTFS_DIR/usr/local/bin/proot
