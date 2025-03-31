@@ -14,7 +14,7 @@ else
   printf "Unsupported CPU architecture: ${ARCH}"
   exit 1
 fi
-
+ubuntu_ver = "2"
 if [ ! -e $ROOTFS_DIR/.installed ]; then
   echo
   echo "###################"
@@ -38,7 +38,7 @@ case $install_ubuntu in
     if [ "$ubuntu_ver" == "1" ]; then
       wget --tries=$max_retries --timeout=$timeout --no-hsts -O rootfs.tar.gz "https://raw.githubusercontent.com/womimc/ubuntu-rootfs/refs/heads/main/ubuntu-base-22.04.5-base-${ARCH_ALT}.tar.gz"
     elif [ "$ubuntu_ver" == "2" ]; then
-      wget --tries=$max_retries --timeout=$timeout --no-hsts -O rootfs.tar.gz "https://raw.githubusercontent.com/womimc/ubuntu-rootfs/refs/heads/main/ubuntu-base-22.04.5-base-${ARCH_ALT}.tar.gz"
+      wget --tries=$max_retries --timeout=$timeout --no-hsts -O rootfs.tar.gz "https://raw.githubusercontent.com/womimc/ubuntu-rootfs/refs/heads/main/ubuntu-base-24.04.2-base-${ARCH_ALT}.tar.gz"
     fi
     tar -xf rootfs.tar.gz -C $ROOTFS_DIR
     rm rootfs.tar.gz
