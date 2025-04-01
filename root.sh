@@ -24,10 +24,10 @@ if [ ! -e $ROOTFS_DIR/.installed ]; then
   echo "#########################"
   echo
   read -p "Ubuntu version (1/2, default 3): " ubuntu_ver
-  if [ "$ubuntu_ver" -ne 1 ] && [ "$ubuntu_ver" -ne 2 ]; then
+  if [ "$ubuntu_ver" -ne 1 ] && [ "$ubuntu_ver" -ne 2 ] && [ "$ubuntu_ver" -ne 3 ]; then
     echo
     echo "Wrong version!"
-    echo "Choose 1 or 2"
+    echo "Choose 1, 2 or 3"
     echo
     exit
   fi
