@@ -14,15 +14,16 @@ else
   printf "Unsupported CPU architecture: ${ARCH}"
   exit 1
 fi
-set ubuntu_ver = "2"
+set ubuntu_ver = 2
 if [ ! -e $ROOTFS_DIR/.installed ]; then
   echo
-  echo "###################"
-  echo "# 1) Ubuntu 22.04 #"
-  echo "# 2) Ubuntu 24.04 #"
-  echo "###################"
+  echo "#########################"
+  echo "#    1) Ubuntu 20.04    #"
+  echo "#    2) Ubuntu 22.04    #"
+  echo "#    3) Ubuntu 24.04    #"
+  echo "#########################"
   echo
-  read -p "Ubuntu version (1/2, default 2): " ubuntu_ver
+  read -p "Ubuntu version (1/2, default 3): " ubuntu_ver
   if [ "$ubuntu_ver" -ne 1 ] && [ "$ubuntu_ver" -ne 2 ]; then
     echo
     echo "Wrong version!"
