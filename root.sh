@@ -21,6 +21,7 @@ if [ ! -e $ROOTFS_DIR/.installed ]; then
   echo "#    1) Ubuntu 20.04    #"
   echo "#    2) Ubuntu 22.04    #"
   echo "#    3) Ubuntu 24.04    #"
+  echo "#    4) Debian 12       #"
   echo "#########################"
   echo
   read -p "Ubuntu version (1/2, default 3): " ubuntu_ver
@@ -36,10 +37,13 @@ fi
 
 case $install_ubuntu in
   [yY][eE][sS])
-    if [ "$ubuntu_ver" == "1" ]; then
+    if [ "$ubuntu_ver" == "2" ]; then
       wget --tries=$max_retries --timeout=$timeout --no-hsts -O rootfs.tar.gz "https://raw.githubusercontent.com/womimc/ubuntu-rootfs/refs/heads/main/ubuntu-base-22.04.5-base-${ARCH_ALT}.tar.gz"
-    elif [ "$ubuntu_ver" == "2" ]; then
+    elif [ "$ubuntu_ver" == "3" ]; then
       wget --tries=$max_retries --timeout=$timeout --no-hsts -O rootfs.tar.gz "https://raw.githubusercontent.com/womimc/ubuntu-rootfs/refs/heads/main/ubuntu-base-24.04.2-base-${ARCH_ALT}.tar.gz"
+    fi
+    if [ "$ubuntu_ver" == "1" ]; then
+      wget --tries=$max_retries --timeout=$timeout --no-hsts -O rootfs.tar.gz "https://raw.githubusercontent.com/womimc/ubuntu-rootfs/refs/heads/main/ubuntu-base-20.04.5-base-${ARCH_ALT}.tar.gz"
     fi
     tar -xf rootfs.tar.gz -C $ROOTFS_DIR
     rm rootfs.tar.gz
