@@ -4,6 +4,8 @@
     ```cd root```
 3. Install ubuntu
     ```bash root.sh```
+4. *Install base packages
+    ```apt update && apt install wget curl neofetch git node-js npm python3 python3-pip pipx build-essential software-properties-common ca-certificates gnupg lsb-release ufw htop net-tools npam unzip zip tar tmux vim nano bash-completion man-db lsof tree jq -y```
 
 
 ## FIXES
