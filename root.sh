@@ -14,7 +14,7 @@ else
   printf "Unsupported CPU architecture: ${ARCH}"
   exit 1
 fi
-set ubuntu_ver = 2
+sys_ver=2
 if [ ! -e $ROOTFS_DIR/.installed ]; then
   echo
   echo "#########################"
@@ -24,8 +24,8 @@ if [ ! -e $ROOTFS_DIR/.installed ]; then
   echo "#    4) Debian 12       #"
   echo "#########################"
   echo
-  read -p "Ubuntu version (1/2, default 3): " ubuntu_ver
-  if [ "$ubuntu_ver" -ne 1 ] && [ "$ubuntu_ver" -ne 2 ] && [ "$ubuntu_ver" -ne 3 ]; then
+  read -p "Chose OS (1/2/3/4, default 3): " sys_ver
+  if [ "$sys_ver" -ne 1 ] && [ "$sys_ver" -ne 2 ] && [ "$sys_ver" -ne 3 ] && [ "$sys_ver" -ne 4 ]; then
     echo
     echo "Wrong version!"
     echo "Choose 1, 2 or 3"
@@ -37,12 +37,15 @@ fi
 
 case $install_ubuntu in
   [yY][eE][sS])
-    if [ "$ubuntu_ver" == "2" ]; then
+    if [ "$sys_ver" == "2" ]; then
       wget --tries=$max_retries --timeout=$timeout --no-hsts -O rootfs.tar.gz "https://raw.githubusercontent.com/womimc/ubuntu-rootfs/refs/heads/main/ubuntu-base-22.04.5-base-${ARCH_ALT}.tar.gz"
-    elif [ "$ubuntu_ver" == "3" ]; then
+    elif [ "$sys_ver" == "3" ]; then
       wget --tries=$max_retries --timeout=$timeout --no-hsts -O rootfs.tar.gz "https://raw.githubusercontent.com/womimc/ubuntu-rootfs/refs/heads/main/ubuntu-base-24.04.2-base-${ARCH_ALT}.tar.gz"
     fi
-    if [ "$ubuntu_ver" == "1" ]; then
+    if [ "$sys_ver" == "1" ]; then
+      wget --tries=$max_retries --timeout=$timeout --no-hsts -O rootfs.tar.gz "https://raw.githubusercontent.com/womimc/ubuntu-rootfs/refs/heads/main/ubuntu-base-20.04.5-base-${ARCH_ALT}.tar.gz"
+    fi
+    if [ "$sys_ver" == "4" ]; then
       wget --tries=$max_retries --timeout=$timeout --no-hsts -O rootfs.tar.gz "https://raw.githubusercontent.com/womimc/ubuntu-rootfs/refs/heads/main/ubuntu-base-20.04.5-base-${ARCH_ALT}.tar.gz"
     fi
     tar -xf rootfs.tar.gz -C $ROOTFS_DIR
