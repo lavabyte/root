@@ -48,7 +48,8 @@
 5. System has not been booted with systemd as init system (PID 1). Can't operate.
    Failed to connect to bus: Host is down
    ```bash
-   service [service name] (start/stop/restart)```
+   service [service name] (start/stop/restart)
+   ```
 7. bash: /usr/lib/command-not-found: No such file or directory
    ```bash
    apt update && apt install command-not-found -y && apt update```
