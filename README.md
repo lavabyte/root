@@ -5,7 +5,15 @@
 3. Install ubuntu
     ```bash root.sh```
 4. *Install base packages
-    ```apt update && apt install wget curl neofetch git nodejs npm python3 python3-pip pipx build-essential software-properties-common ca-certificates gnupg lsb-release ufw htop net-tools nmap unzip zip tar tmux vim nano bash-completion man-db lsof tree jq -y```
+    ```apt update && apt install wget curl neofetch git nodejs npm python3 python3-pip pipx build-essential software-properties-common ca-certificates gnupg lsb-release ufw htop nmap unzip zip tar tmux vim nano bash-completion man-db lsof tree jq -y```
+
+## Making VM on it
+1. Get minimal ubuntu 24.04 image: `wget -O ubuntu24.img https://cloud-images.ubuntu.com/minimal/releases/noble/release/ubuntu-24.04-minimal-cloudimg-amd64.img`
+2. Install requirements: `apt update && apt install qemu-system-x86 qemu-utils genisoimage -y`
+3. Make user-data.yaml file with login and password: `printf "#cloud-config\nusers:\n  - default\n  - name: ubuntu\n    sudo: ALL=(ALL) NOPASSWD:ALL\n    groups: users, admin\n    shell: /bin/bash\n    plain_text_passwd: 'ubuntu'\n    lock_passwd: false\nchpasswd:\n  expire: false\nssh_pwauth: true\n" > user-data.yaml`
+4. Generate ISO from user-data.yaml: `genisoimage -output user-data.iso -volid cidata -joliet -rock user-data.yaml`
+5. Run machine and enter it: `qemu-system-x86_64 -m 2048 -smp 2 -drive file=ubuntu24.img,format=qcow2 -drive file=user-data.iso,format=raw -net nic -net user -nographic`
+   - To kill machine press CTRL + A, then X
 
 
 ## FIXES
