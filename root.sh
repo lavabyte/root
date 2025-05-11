@@ -14,7 +14,7 @@ else
   printf "Unsupported CPU architecture: ${ARCH}"
   exit 1
 fi
-sys_ver=2
+sys_ver='3'
 if [ ! -e $ROOTFS_DIR/.installed ]; then
   echo
   echo "#########################"
