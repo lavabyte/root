@@ -15,7 +15,8 @@
    git clone https://github.com/womimc/root && cd root && bash root.sh
     ```
 5. *Install base packages
-    ```apt update && apt install wget curl neofetch git nodejs npm python3 python3-pip pipx unzip zip tar tmux tmate nano bash-completion man-db -y```
+    ```bash
+   apt update && apt install wget curl neofetch git nodejs npm python3 python3-pip pipx unzip zip tar tmux tmate nano bash-completion man-db -y```
 
 ## Making VM on it
 1. Get minimal ubuntu 24.04 image: `wget -O ubuntu24.img https://cloud-images.ubuntu.com/minimal/releases/noble/release/ubuntu-24.04-minimal-cloudimg-amd64.img`
