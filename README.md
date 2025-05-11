@@ -5,7 +5,7 @@
 3. Install ubuntu
     ```bash root.sh```
 4. *Install base packages
-    ```apt update && apt install wget curl neofetch git nodejs npm python3 python3-pip pipx build-essential software-properties-common ca-certificates gnupg lsb-release ufw htop nmap unzip zip tar tmux vim nano bash-completion man-db lsof tree jq -y```
+    ```apt update && apt install wget curl neofetch git nodejs npm python3 python3-pip pipx build-essential software-properties-common ca-certificates gnupg unzip zip tar tmux vim nano bash-completion man-db lsof tree jq -y```
 
 ## Making VM on it
 1. Get minimal ubuntu 24.04 image: `wget -O ubuntu24.img https://cloud-images.ubuntu.com/minimal/releases/noble/release/ubuntu-24.04-minimal-cloudimg-amd64.img`
