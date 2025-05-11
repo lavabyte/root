@@ -41,10 +41,12 @@
 ## FIXES
 1. ERROR: ld.so: object '/usr/lib/librtldloader.so' cannot be loaded as audit interface: cannot open shared object file; ignored.
     ```bash
-   apt update && apt upgrade -y && unset LD_AUDIT```
+   apt update && apt upgrade -y && unset LD_AUDIT
+    ```
 3. sudo: unable to resolve host
    ```bash
-   x=$(hostname) && echo "$x" > /etc/hostname && echo "127.0.0.1   $x" >> /etc/hosts```
+   x=$(hostname) && echo "$x" > /etc/hostname && echo "127.0.0.1   $x" >> /etc/hosts
+   ```
 5. System has not been booted with systemd as init system (PID 1). Can't operate.
    Failed to connect to bus: Host is down
    ```bash
@@ -52,4 +54,5 @@
    ```
 7. bash: /usr/lib/command-not-found: No such file or directory
    ```bash
-   apt update && apt install command-not-found -y && apt update```
+   apt update && apt install command-not-found -y && apt update
+   ```
