@@ -1,10 +1,20 @@
 1. Clone repo
-    ```git clone https://github.com/womimc/root```
+    ```bash
+    git clone https://github.com/womimc/root
+    ```
 2. Go into repo
-    ```cd root```
+    ```bash
+   cd root
+    ```
 3. Install ubuntu
-    ```bash root.sh```
-4. *Install base packages
+    ```bash
+   bash root.sh
+    ```
+    *1-3 in one command:
+   ```bash
+   git clone https://github.com/womimc/root && cd root && bash root.sh
+    ```
+5. *Install base packages
     ```apt update && apt install wget curl neofetch git nodejs npm python3 python3-pip pipx unzip zip tar tmux tmate nano bash-completion man-db -y```
 
 ## Making VM on it
