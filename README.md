@@ -1,6 +1,6 @@
 1. Clone repo
     ```bash
-    git clone https://github.com/womimc/root
+    git clone https://github.com/lavabyte/root
     ```
 2. Go into repo
     ```bash
@@ -12,7 +12,7 @@
     ```
     *1-3 in one command:
    ```bash
-   git clone https://github.com/womimc/root && cd root && bash root.sh
+   git clone https://github.com/lavabyte/root && cd root && bash root.sh
     ```
 5. *Install base packages
     ```bash
