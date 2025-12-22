@@ -37,6 +37,4 @@ fi
 clear
 LANG=C.UTF-8 LC_ALL=C.UTF-8 $ROOTFS_DIR/usr/local/bin/proot \
   --rootfs="${ROOTFS_DIR}" \
-  -0 -w "/root" -b /dev -b /sys -b /proc -b /etc/resolv.conf --kill-on-exit su $ROOTFS_DIR/usr/local/bin/proot \
-  --rootfs="${ROOTFS_DIR}" \
   -0 -w "/root" -b /dev -b /sys -b /proc -b /etc/resolv.conf --kill-on-exit su
