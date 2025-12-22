@@ -35,6 +35,8 @@ if [ ! -e $ROOTFS_DIR/.installed ]; then
   touch $ROOTFS_DIR/.installed
 fi
 clear
-$ROOTFS_DIR/usr/local/bin/proot \
+LANG=C.UTF-8 LC_ALL=C.UTF-8 $ROOTFS_DIR/usr/local/bin/proot \
+  --rootfs="${ROOTFS_DIR}" \
+  -0 -w "/root" -b /dev -b /sys -b /proc -b /etc/resolv.conf --kill-on-exit su $ROOTFS_DIR/usr/local/bin/proot \
   --rootfs="${ROOTFS_DIR}" \
   -0 -w "/root" -b /dev -b /sys -b /proc -b /etc/resolv.conf --kill-on-exit su
