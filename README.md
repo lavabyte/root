@@ -61,3 +61,7 @@
    ```bash
    apt update && apt install command-not-found -y && apt update
    ```
+8. groups: cannot find name for group ID 998
+   ```bash
+   echo "hostgroup:x:998:" >> /etc/group
+   ```
