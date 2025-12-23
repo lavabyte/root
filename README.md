@@ -48,20 +48,24 @@
     ```bash
    apt update && apt upgrade -y && unset LD_AUDIT
     ```
-3. sudo: unable to resolve host
+2. sudo: unable to resolve host
    ```bash
    x=$(hostname) && echo "$x" > /etc/hostname && echo "127.0.0.1   $x" >> /etc/hosts
    ```
-5. System has not been booted with systemd as init system (PID 1). Can't operate.
+3. System has not been booted with systemd as init system (PID 1). Can't operate.
    Failed to connect to bus: Host is down
    ```bash
    service [service name] (start/stop/restart)
    ```
-7. bash: /usr/lib/command-not-found: No such file or directory
+4. bash: /usr/lib/command-not-found: No such file or directory
    ```bash
    apt update && apt install command-not-found -y && apt update
    ```
-8. groups: cannot find name for group ID 998
+5. groups: cannot find name for group ID 998
    ```bash
    echo "hostgroup:x:998:" >> /etc/group
+   ```
+6. bash: lesspipe: command not found
+   ```bash
+   apt update && apt install less -y
    ```
